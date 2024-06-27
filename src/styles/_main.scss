@@ -1,0 +1,13 @@
+@import './_reset.scss';
+
+* {
+  font-family: Montseratt, sans-serif;
+}
+
+body {
+  min-height: 100%;
+  background: var(--body-bg-color);
+  #root {
+    height: 100%;
+  }
+}

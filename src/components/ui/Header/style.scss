@@ -1,0 +1,80 @@
+@import "src/styles/_colors.scss";
+
+#header_component {
+  height: 48px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+  padding: 0 var(--sides-offset);
+  .logo_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    #logo {
+      font-size: 2.25rem;
+      color: var(--header-text-color);
+      transition: .5s ease color;
+    }
+    .logo-text {
+      font-weight: bold;
+      letter-spacing: 1px;
+      font-family: Roboto, serif;
+      font-size: 1.25rem;
+      color: var(--header-text-color);
+      transition: .5s ease color;
+    }
+  }
+
+  .header-links_group {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    li {
+      overflow: hidden;
+      padding: 0.25rem 0;
+      a {
+        position: relative;
+        font-size: 1.125rem;
+        color: var(--header-text-color);
+        transition: .5s ease color;
+        &::before {
+          position: absolute;
+          content: "";
+          width: 100%;
+          height: 2px;
+          background: var(--header-text-color);
+          bottom: 0;
+          left: -100%;
+          transition: .5s ease left;
+        }
+        &:hover::before {
+          left: 0;
+        }
+      }
+    }
+  }
+  .header-tools_group {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.6725rem;
+    .separator {
+      height: 1.25rem;
+      width: 2px;
+      background: rgba(0,0,0,0.425);
+    }
+    svg {
+      font-size: 1.5rem;
+      color: var(--header-text-color);
+      transition: .5s ease color;
+      cursor: pointer;
+      &:hover {
+        color: var(--header-hover-text-color);
+      }
+    }
+  }
+}

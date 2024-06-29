@@ -1,4 +1,4 @@
-import {createContext, useState, ReactNode, useEffect} from "react";
+import React, {createContext, useState, ReactNode, useEffect} from "react";
 import {Theme} from "../typing/types.tsx";
 import {IThemeContext} from "../typing/interfaces.tsx";
 import {ThemeDict} from "../constants.ts";

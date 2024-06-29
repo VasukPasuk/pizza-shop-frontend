@@ -2,7 +2,7 @@ import './style.scss'
 import React from 'react';
 import {FaUserFriends} from "react-icons/fa";
 import {MdArrowForward} from "react-icons/md";
-import {redirect, useNavigate} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 import {useTheme} from "../../../hooks/useTheme.tsx";
 
 function IntroSection(props) {

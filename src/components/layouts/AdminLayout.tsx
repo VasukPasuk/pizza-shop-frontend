@@ -5,21 +5,26 @@ import {Outlet} from "react-router-dom";
 import Menu from "../ui/Menu/Menu.tsx";
 import UpperBar from "../ui/UpperBar/UpperBar.tsx";
 import {MenuProvider} from "../../context/MenuContext.tsx";
+import './AdminLayout.style.scss';
 
-function MainLayout(props) {
+function AdminLayout(props) {
   return (
     <>
       <Header role="admin"/>
       <MenuProvider>
-        <Menu/>
-        <main>
-          <UpperBar/>
-          <Outlet/>
-        </main>
-      </MenuProvider>
+        <div className="content-wrapper">
+          <Menu/>
+          <main
+            className="main-wrapper"
+          >
+            <UpperBar/>
+            <Outlet/>
+          </main>
+        </div>
 
+      </MenuProvider>
     </>
   );
 }
 
-export default MainLayout;
+export default AdminLayout;

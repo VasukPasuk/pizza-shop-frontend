@@ -1,64 +1,90 @@
-import React, {FC, ReactElement} from 'react';
-import {IoIosArrowForward} from "react-icons/io";
+import React, { FC, useState } from 'react';
+import { IoIosArrowForward } from "react-icons/io";
+import { Link } from "react-router-dom";
+import './style.scss';
+import { BsArrowReturnRight } from "react-icons/bs";
 
+type AccordionProps = {
+  children?: React.ReactNode;
+  rootLink: RootLinks;
+  linksData: Array<LinkData>;
+  headIcon: React.ReactNode;
+  headText: string;
+};
 
-type Accordion = {
-  children: React.ReactNode
-}
+type AccordionHeadProps = {
+  children?: React.ReactNode;
+  headIcon: React.ReactNode;
+  headText: string;
+};
 
-const Accordion:FC<Accordion> = (props) => {
-  const {children} = props;
+type AccordionItemProps = {
+  text: string;
+  rootLink: RootLinks;
+  link: string;
+};
+
+type RootLinks = 'users' | 'products' | 'categories';
+
+type LinkData = {
+  link: string;
+  text: string;
+};
+
+const Accordion: FC<AccordionProps> = ({ headIcon, headText, linksData, rootLink }) => {
   return (
-    <div className="accordion">
+    <li className="accordion">
+      <AccordionHead headIcon={headIcon} headText={headText} />
+      <AccordionBody>
+        {linksData.map(({ text, link }) => (
+          <AccordionItem key={link} text={text} link={link} rootLink={rootLink} />
+        ))}
+      </AccordionBody>
+    </li>
+  );
+};
 
+const AccordionHead: FC<AccordionHeadProps> = ({ children, headText, headIcon }) => {
+  const [active, setActive] = useState<boolean>(false);
+
+  return (
+    <div
+      className="accordion-head"
+      onClick={() => setActive(prev => !prev)}
+      data-opened={active}
+    >
+      <IoIosArrowForward style={{ transform: `rotate(${active ? 90 : 0}deg)`, transition: '.5s ease transform' }} />
+      {headIcon}
+      <span>
+        {active && children}
+        {headText}
+      </span>
     </div>
   );
-}
+};
 
-type AccordionHead = {
-  children: React.ReactNode
-}
+type AccordionBodyProps = {
+  children: React.ReactNode;
+};
 
-const AccordionHead:FC<AccordionHead> = (props) =>  {
-  const {children} = props;
+const AccordionBody: FC<AccordionBodyProps> = ({ children }) => {
   return (
-    <div className={`accordion-head`}>
-      <span>
-        {children}
-      </span>
-      <IoIosArrowForward />
-    </div>
-  )
-}
-
-type AccordionBody = {
-  children: React.ReactNode
-}
-
-const AccordionBody:FC<AccordionBody> = (props) =>  {
-  const {children} = props;
-  return (
-    <ul className={`accordion-body`}>
+    <div className="accordion-body">
       {children}
-    </ul>
-  )
-}
+    </div>
+  );
+};
 
-type TypeAccordionItem = {
-  icon: SVGAElement,
-  text: string
-}
-
-const AccordionItem:FC<TypeAccordionItem> = (props) => {
-  const {icon, text} = props;
+const AccordionItem: FC<AccordionItemProps> = ({ text, rootLink, link }) => {
   return (
-    <li className={`accordion-item`}>
-      icon
-      <span>
-        text
-      </span>
-    </li>
-  )
-}
+    <Link
+      to={`/admin/${rootLink}/${link}`}
+      className="accordion-item"
+    >
+      <BsArrowReturnRight />
+      {text}
+    </Link>
+  );
+};
 
-export {Accordion};
+export { Accordion };

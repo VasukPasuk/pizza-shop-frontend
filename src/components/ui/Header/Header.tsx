@@ -2,7 +2,7 @@ import React from 'react';
 import './style.scss';
 import {Link} from "react-router-dom";
 import {AiFillMoon, AiFillSun} from "react-icons/ai";
-import {MdSettings} from "react-icons/md";
+import {MdNotifications, MdSettings} from "react-icons/md";
 import {FaPizzaSlice, FaUser} from "react-icons/fa6";
 import {useTheme} from "../../../hooks/useTheme.tsx";
 
@@ -41,17 +41,30 @@ function Header(props:TypeHeaderProps) {
           <div onClick={() => setTheme(prev => prev === "dark" ? 'light' : 'dark')}>
             {theme === "dark" ? <AiFillMoon/> : <AiFillSun/>}
           </div>
-          {/*<div className="separator"/>*/}
           <MdSettings/>
-          {/*<div className="separator"/>*/}
           <FaUser/>
         </div>
       </header>
     );
   }
   return (
-    <header>
-      1
+    <header
+      id="header_component"
+      data-feature="special"
+    >
+      <div className="logo-and-label-container">
+        <FaPizzaSlice id="logo"/>
+        <span className="logo-text"> PIZZA PARADISE </span>
+        <span className="logo-label"> Admin </span>
+      </div>
+      <div className="header-tools_group">
+        <div onClick={() => setTheme(prev => prev === "dark" ? 'light' : 'dark')}>
+          {theme === "dark" ? <AiFillMoon/> : <AiFillSun/>}
+        </div>
+        <MdNotifications/>
+        <MdSettings/>
+        <FaUser size={20}/>
+      </div>
     </header>
   )
 }

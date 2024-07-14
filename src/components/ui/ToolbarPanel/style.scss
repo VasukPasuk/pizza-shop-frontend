@@ -60,18 +60,11 @@
       border: none;
       outline: none;
       height: 100%;
-      padding: 0;
-      width: 0;
-      transition:
-        0.275s ease-out width,
-        0.275s ease-out padding;
+      width: 16rem;
+      padding: 0.425rem 0.75rem;
       border-radius: 0.25rem;
       background: transparentize(#fff, 0.85);
       box-sizing: border-box;
-      &:focus {
-        width: 16rem;
-        padding: 0.425rem 0.75rem;
-      }
     }
   }
 }

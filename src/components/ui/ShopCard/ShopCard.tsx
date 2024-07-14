@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useCallback, useState} from 'react';
 import './style.scss';
 import { IShopCard } from '../../../typing/interfaces.tsx';
 import { FaEllipsisVertical } from 'react-icons/fa6';
@@ -6,6 +6,10 @@ import Button from '../Button/Button.tsx';
 
 function ShopCard(props: IShopCard) {
   const [activeActionMenu, setActiveActionMenu] = useState<boolean>(false);
+  const onFaEllipsisVerticalClick = (event: React.MouseEvent<SVGElement>) => {
+    setActiveActionMenu(prevState => !prevState)
+  }
+
   const { key, category, size = 'medium', discount, flour, inCart, name, popular, price } = props;
   return (
     <div
@@ -18,9 +22,10 @@ function ShopCard(props: IShopCard) {
           {!!discount && <span className="card-tag discount-tag">- {discount}%</span>}
           {popular && <span className="card-tag popular-tag"> popular </span>}
         </div>
-        <FaEllipsisVertical 
-
-          className="product-shop-cart__ellipsis-action-trigger" />
+        <FaEllipsisVertical
+          className="product-shop-cart__ellipsis-action-trigger"
+          onClick={onFaEllipsisVerticalClick}
+        />
         {activeActionMenu && (
           <ul className="product-shop-cart__action-menu">
             <li className="product-shop-cart__action-menu__option">View</li>

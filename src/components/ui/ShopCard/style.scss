@@ -44,7 +44,15 @@
     }
 
     .product-shop-cart__ellipsis-action-trigger {
-      font-size: 1.5rem;
+      font-size: 2rem;
+      background: transparent;
+      border-radius: .25rem;
+      transition: .25s ease background;
+      padding: .25rem;
+      cursor: pointer;
+      &:hover {
+        background: transparentize(#fff, 0.9);
+      }
     }
 
     .product-shop-cart__action-menu {

@@ -18,13 +18,15 @@ function ToolbarPanel(props) {
         </div>
       </div>
       <div className="search-part">
-        <input
-          type="text"
-          id="search-input"
-          autoComplete="off"
-        />
+        <div className="search-input__wrapper">
+          <input
+            type="text"
+            id="search-input"
+            autoComplete="off"
+          />
+        </div>
         <label htmlFor="search-input">
-          <MdSearch id="search-button" />
+          <MdSearch id="search-button"/>
         </label>
       </div>
     </div>

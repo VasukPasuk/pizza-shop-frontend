@@ -5,28 +5,20 @@ import Pagination from '../../ui/Pagination/Pagination.tsx';
 import ShopCard from '../../ui/ShopCard/ShopCard.tsx';
 import {PIZZA_DATA} from '../../../constants/test_data.ts';
 import ToolbarPanel from '../../ui/ToolbarPanel/ToolbarPanel.tsx';
+import CategoriesTabPanel from "../../ui/CategoriesTabPanel/CategoriesTabPanel.tsx";
 
 const categories: string[] = ['All', 'Seafood', 'Vegetarian', 'Meat', 'Spicy'];
 
 function ShopPage(props) {
   const [currentCategory, setCurrentCategory] = useState<string>("All")
   return (
-    <div>
+    <div className="shop-page__container">
       <ToolbarPanel/>
-      <div className="category-tabs-bar">
-        {categories.map((category) => (
-          <Link
-            to={`?category=${category.toLowerCase()}`}
-            className="pill-tab-category"
-            key={category}
-            data-active-link={currentCategory === category}
-            onClick={() => setCurrentCategory(prevState => category)}
-          >
-            {category}
-          </Link>
-        ))}
-
-      </div>
+      <CategoriesTabPanel
+        categories={categories}
+        currentCategory={currentCategory}
+        setCategoryFn={setCurrentCategory}
+      />
       <div className="product-shop-cards__section">
         {PIZZA_DATA.slice(0, 8).map((pizza) => (
           <ShopCard

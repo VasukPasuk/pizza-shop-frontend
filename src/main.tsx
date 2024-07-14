@@ -11,6 +11,8 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
     ComponentPreviews={ComponentPreviews}
     useInitialHook={useInitial}
   >
-    <App />
+    <>
+      <App />
+    </>
   </DevSupport>
 );

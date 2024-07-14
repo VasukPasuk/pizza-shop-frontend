@@ -1,13 +1,17 @@
 import router from './react-router/router.tsx';
 import { RouterProvider } from 'react-router-dom';
 import { ThemeProvider } from './context/ThemeContext.tsx';
+import {Provider} from "react-redux";
+import store from "./redux/store.tsx";
 
 function App() {
   return (
     <>
-      <ThemeProvider>
-        <RouterProvider router={router} />
-      </ThemeProvider>
+      <Provider store={store}>
+        <ThemeProvider>
+          <RouterProvider router={router} />
+        </ThemeProvider>
+      </Provider>
     </>
   );
 }

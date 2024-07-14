@@ -1,11 +1,7 @@
 import React from 'react';
 
 function ProductsCreate() {
-  return (
-    <section>
-      ProductsCreate
-    </section>
-  );
+  return <section>ProductsCreate</section>;
 }
 
 export default ProductsCreate;

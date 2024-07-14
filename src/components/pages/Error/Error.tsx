@@ -2,11 +2,7 @@ import './style.scss';
 import React from 'react';
 
 function Error() {
-  return (
-    <section>
-
-    </section>
-  );
+  return <section>404</section>;
 }
 
 export default Error;

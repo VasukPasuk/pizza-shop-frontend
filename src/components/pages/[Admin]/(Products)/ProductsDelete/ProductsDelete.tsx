@@ -1,11 +1,7 @@
 import React from 'react';
 
 function ProductsDelete(props) {
-  return (
-    <section>
-      ProductsDelete
-    </section>
-  );
+  return <section>ProductsDelete</section>;
 }
 
 export default ProductsDelete;

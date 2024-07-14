@@ -1,8 +1,8 @@
 import React, { FC, useState } from 'react';
-import { IoIosArrowForward } from "react-icons/io";
-import { Link } from "react-router-dom";
+import { IoIosArrowForward } from 'react-icons/io';
+import { Link } from 'react-router-dom';
 import './style.scss';
-import { BsArrowReturnRight } from "react-icons/bs";
+import { BsArrowReturnRight } from 'react-icons/bs';
 
 type AccordionProps = {
   children?: React.ReactNode;
@@ -34,10 +34,18 @@ type LinkData = {
 const Accordion: FC<AccordionProps> = ({ headIcon, headText, linksData, rootLink }) => {
   return (
     <li className="accordion">
-      <AccordionHead headIcon={headIcon} headText={headText} />
+      <AccordionHead
+        headIcon={headIcon}
+        headText={headText}
+      />
       <AccordionBody>
         {linksData.map(({ text, link }) => (
-          <AccordionItem key={link} text={text} link={link} rootLink={rootLink} />
+          <AccordionItem
+            key={link}
+            text={text}
+            link={link}
+            rootLink={rootLink}
+          />
         ))}
       </AccordionBody>
     </li>
@@ -50,10 +58,15 @@ const AccordionHead: FC<AccordionHeadProps> = ({ children, headText, headIcon })
   return (
     <div
       className="accordion-head"
-      onClick={() => setActive(prev => !prev)}
+      onClick={() => setActive((prev) => !prev)}
       data-opened={active}
     >
-      <IoIosArrowForward style={{ transform: `rotate(${active ? 90 : 0}deg)`, transition: '.5s ease transform' }} />
+      <IoIosArrowForward
+        style={{
+          transform: `rotate(${active ? 90 : 0}deg)`,
+          transition: '.5s ease transform',
+        }}
+      />
       {headIcon}
       <span>
         {active && children}
@@ -68,11 +81,7 @@ type AccordionBodyProps = {
 };
 
 const AccordionBody: FC<AccordionBodyProps> = ({ children }) => {
-  return (
-    <div className="accordion-body">
-      {children}
-    </div>
-  );
+  return <div className="accordion-body">{children}</div>;
 };
 
 const AccordionItem: FC<AccordionItemProps> = ({ text, rootLink, link }) => {

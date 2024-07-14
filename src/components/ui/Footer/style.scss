@@ -1,17 +1,23 @@
-@import "src/styles/_colors.scss";
+@import 'src/styles/_colors.scss';
 
 #footer_component {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 100%;
   .footer-up {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: start;
-    gap: 10rem;
+    gap: 8rem;
     padding: 2rem 8rem;
+    @media screen and (width <= 768px) {
+      flex-direction: column;
+      gap: 4rem;
+      padding: 1rem 4rem;
+    }
     .footer-column {
       display: flex;
       flex-direction: column;
@@ -25,17 +31,15 @@
         align-items: center;
         gap: 0.5rem;
         color: var(--footer-col-head-text-color);
-        transition: .5s ease color;
+        transition: 0.5s ease color;
       }
       .footer-column-body {
         color: var(--footer-col-body-text-color);
-        transition: .5s ease color;
+        transition: 0.5s ease color;
       }
-
     }
 
     .links-col {
-
       ul {
         display: flex;
         flex-direction: column;
@@ -89,10 +93,10 @@
     justify-content: center;
     align-items: center;
     color: var(--footer-col-head-text-color);
-    transition: .5s ease color;
+    transition: 0.5s ease color;
     padding: 1rem 0;
   }
-  &[data-has-shadow="true"] {
-    box-shadow: 0 0 5px 5px rgba(0,0,0,0.1);
+  &[data-has-shadow='true'] {
+    box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.1);
   }
 }

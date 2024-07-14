@@ -1,6 +1,6 @@
-import router from "./react-router/router.tsx";
-import {RouterProvider} from "react-router-dom";
-import {ThemeProvider} from "./context/ThemeContext.tsx";
+import router from './react-router/router.tsx';
+import { RouterProvider } from 'react-router-dom';
+import { ThemeProvider } from './context/ThemeContext.tsx';
 
 function App() {
   return (
@@ -9,7 +9,7 @@ function App() {
         <RouterProvider router={router} />
       </ThemeProvider>
     </>
-  )
+  );
 }
 
-export default App
+export default App;

@@ -1,32 +1,37 @@
-@import "_colors.scss";
+@import '_colors.scss';
 
 html {
   font-size: 16px;
 }
 
-
-html[theme="dark"] {
+html[theme='dark'] {
   --header-text-color: rgb(255, 255, 255);
   --header-hover-text-color: rgb(230, 230, 230);
 
-  --body-bg-color: #100D17;
+  --body-bg-color: #100d17;
 
   --footer-col-head-text-color: #{$bg-gray-200};
   --footer-col-body-text-color: #{$bg-gray-300};
 
   --simple-text-color: #{$bg-gray-300};
+
+  --card-bg-color: #{transparentize(#3e3f3f, 0.5)};
+  --card-in-card-state-bg: #{transparentize(#424242, 0.7)};
 }
 
-html[theme="light"] {
-  --header-text-color: #2D2D2D;
+html[theme='light'] {
+  --header-text-color: #2d2d2d;
   --header-hover-text-color: rgb(31 41 55);
 
-  --body-bg-color: #FFFFFF;
+  --body-bg-color: #ffffff;
 
   --footer-col-head-text-color: #{$bg-gray-800};
   --footer-col-body-text-color: #{$bg-gray-700};
 
-  --simple-text-color: #{$bg-gray-700} ;
+  --simple-text-color: #{$bg-gray-700};
+
+  --card-bg-color: #{$bg-gray-200};
+  --card-in-card-state-bg: #{$bg-gray-300};
 }
 
 :root {

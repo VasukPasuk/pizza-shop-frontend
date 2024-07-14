@@ -1,5 +1,5 @@
-@import "src/styles/_colors.scss";
-@import "src/styles/_static-variables.scss";
+@import 'src/styles/_colors.scss';
+@import 'src/styles/_static-variables.scss';
 
 #upper-bar {
   display: flex;
@@ -20,9 +20,9 @@
 
     .upper-bar__left-side__menu-switcher {
       cursor: pointer;
-      transition: .5s ease color;
+      transition: 0.5s ease color;
       &:hover {
-        color: #4A4A4A;
+        color: #4a4a4a;
       }
     }
     .upper-bar__left-side__breadcrumbs-box {

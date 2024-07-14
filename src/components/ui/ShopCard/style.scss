@@ -1,0 +1,110 @@
+@import 'src/styles/_colors.scss';
+@import 'src/styles/_static-variables.scss';
+
+.product-shop-cart {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: 0.25s ease background;
+  background: var(--card-bg-color);
+  border-radius: 0.5rem;
+  padding: 0.75rem 0.5rem;
+  gap: 1.5rem;
+  &[data-in-cart='true'] {
+    background: var(--card-in-card-state-bg);
+  }
+
+  .tags-and-action-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+
+    .product-shop-cart__tags-box {
+      display: flex;
+      justify-content: space-between;
+      gap: 0.5rem;
+      align-items: center;
+
+      .card-tag {
+        padding: 0.25rem 0.5rem;
+        border-radius: 0.25rem;
+      }
+
+      .discount-tag {
+        background: transparentize(#ffb800, 0.2);
+        color: black;
+        font-weight: 600;
+      }
+
+      .popular-tag {
+        background: transparentize(#0047ff, 0.3);
+      }
+    }
+
+    .product-shop-cart__ellipsis-action-trigger {
+      font-size: 1.5rem;
+    }
+
+    .product-shop-cart__action-menu {
+      display: none;
+
+      .product-shop-cart__action-menu__option {
+      }
+
+      .product-shop-cart__action-menu__option {
+        .product-shop-cart__action-menu__option__title {
+        }
+
+        .product-shop-cart__action-menu__option__title__micropt-box {
+          display: none;
+
+          & > li {
+          }
+        }
+      }
+    }
+  }
+
+  .pizza-image {
+  }
+
+  .select-separator {
+    color: #4a4a4a;
+  }
+
+  .select-size-box {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    li {
+      color: transparentize($bg-gray-400, 0.5);
+      &[data-selected='true'] {
+        color: $bg-gray-300;
+      }
+    }
+  }
+
+  .select-flour-box {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    li {
+      &[data-selected='true'] {
+        background: #000;
+      }
+    }
+  }
+
+  .price-and-button-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+}

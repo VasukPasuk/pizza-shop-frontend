@@ -1,12 +1,15 @@
-import React from 'react';
+import React, { FC } from 'react';
 import './style.scss';
 
-function Button() {
-  return (
-    <button>
-      This is button
-    </button>
-  );
+type TVariant = 'main' | 'success' | 'danger' | 'warning';
+
+interface IButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  variant: TVariant;
 }
+
+const Button: FC<IButtonProps> = (props) => {
+  const { variant = 'main', children } = props;
+  return <button data-variant={variant}>{children}</button>;
+};
 
 export default Button;

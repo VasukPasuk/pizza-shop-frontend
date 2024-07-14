@@ -57,7 +57,12 @@ section {
 }
 
 // Set a consistent line height and remove default spacing for headings
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-size: 100%;
   font-weight: normal;
 }

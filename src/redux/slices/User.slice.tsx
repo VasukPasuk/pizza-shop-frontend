@@ -1,31 +1,34 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
+import {IRegisterResponseSuccess} from "../../typing/interfaces.tsx";
 
 
-type Role = "admin" | "customer"
 
-interface User {
-  name: string
-  login: string
-  role: Role
+export interface IUserReduxState extends IRegisterResponseSuccess{
+  isLoading: boolean;
+  error: boolean;
 }
 
-interface IUserReduxState {
-  user: User
-  isAuth: boolean
-  token: string
-  isActivated: boolean
-  error: boolean
-}
-
-const initialState:IUserReduxState = {
+const initialState: IUserReduxState = {
   user: {
-    name: 'Baritone',
-    login: '@baritone',
-    role: 'customer'
+    id: 0,
+    login: "",
+    role: "CUSTOMER"
   },
-  isAuth: false,
-  token: '',
-  isActivated: false,
+  profile: {
+    city: "",
+    district: "",
+    email: "",
+    firstSurname: "",
+    name: "",
+    phone: "",
+    secondSurname: "",
+    street: "",
+  },
+  isLoading: false,
+  extra: {
+    isActivated: false
+  },
+  access_token: "",
   error: false,
 }
 
@@ -33,9 +36,26 @@ const userSlice = createSlice({
   name: 'user',
   initialState,
   reducers: {
-    changeName: (state, action: PayloadAction<number>) => state + action.payload,
+    signup: (_, action: PayloadAction<IRegisterResponseSuccess>) => {
+      const {user, profile, extra, access_token} = action.payload;
+      return {
+        user: user,
+        profile: profile,
+        extra: extra,
+        access_token: access_token,
+        isLoading: false,
+        error: false
+      }
+    },
+    signout: () => initialState,
+    setUserError: (state, action:PayloadAction<boolean>) => {
+      state.error = action.payload
+    },
+    setUserLoading: (state, action:PayloadAction<boolean>) => {
+      state.isLoading = action.payload
+    },
   },
 })
 
 export default userSlice.reducer
-export const {changeName} = userSlice.actions
+export const {signup, signout, setUserError, setUserLoading} = userSlice.actions

@@ -13,9 +13,8 @@ export const ThemeProvider = ({ children }: ThemeProviderProps) => {
   const [theme, setTheme] = useState<Theme>('dark');
   useEffect(() => {
     const HTML = document.documentElement;
-    HTML.setAttribute('theme', ThemeDict[theme]);
+    HTML.setAttribute('theme', theme);
   }, [theme]);
-  console.log(theme);
   return (
     <ThemeContext.Provider
       value={{

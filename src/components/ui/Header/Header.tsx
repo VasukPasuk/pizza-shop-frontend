@@ -17,7 +17,7 @@ function Header(props: TypeHeaderProps) {
     return (
       <header
         id="header_component"
-        data-theme={theme === 'dark' ? 'light' : 'dark'}
+        data-theme={theme}
       >
         <Link
           className="logo_container"
@@ -45,6 +45,7 @@ function Header(props: TypeHeaderProps) {
     <header
       id="header_component"
       data-feature="special"
+      data-theme={theme}
     >
       <div className="logo-and-label-container">
         <FaPizzaSlice id="logo" />

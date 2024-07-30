@@ -1,6 +1,6 @@
-@import 'src/styles/_colors.scss';
-@import 'src/styles/_static-variables.scss';
-@import 'src/styles/_mixins.scss';
+@import '../../../styles/colors';
+@import '../../../styles/static-variables';
+@import '../../../styles/mixins';
 
 button {
   position: relative;
@@ -11,7 +11,7 @@ button {
   border: none;
   outline: none;
   border-radius: 0.25rem;
-  color: #ffffff;
+  color: #{$bg-neutral-200} !important;
   backdrop-filter: opacity(0.125);
   &[data-variant='main'] {
     @include bottom-accent-shadow($main-accent-color, 0.5);

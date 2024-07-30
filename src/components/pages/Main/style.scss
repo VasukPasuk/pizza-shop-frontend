@@ -1,4 +1,25 @@
 @import '../../../styles/colors';
+@import '../../../styles/mixins';
+
+
+html:has([data-theme="light"]) {
+  .intro_title {
+    color: $bg-neutral-700 !important;
+  }
+  .intro_subtitle {
+    color: $bg-neutral-700 !important;
+  }
+  .intro_buttons {
+    button:nth-child(2) {
+      color: $bg-neutral-700 !important;
+
+      svg {
+        color: $bg-neutral-700 !important;
+      }
+    }
+  }
+}
+
 
 .intro_section {
   position: relative;
@@ -27,9 +48,11 @@
     }
 
     .intro_subtitle {
-      font-size: 1.125rem;
+      font-size: 1.1rem;
       color: var(--simple-text-color);
       transition: 0.5s ease color;
+      font-weight: 300;
+      line-height: 1.3rem;
     }
 
     .intro_buttons {
@@ -72,9 +95,11 @@
   .intro_right-block {
     position: relative;
     height: 100%;
+
     img {
       animation: 7.5s ease-in-out infinite pizza-levitation;
     }
+
     img:nth-child(1) {
       position: absolute;
       top: 12.5%;
@@ -113,7 +138,7 @@
     position: absolute;
     width: 200px;
     height: 200px;
-    filter: blur(150px);
+    filter: blur(100px);
     z-index: -1;
   }
 
@@ -146,3 +171,4 @@
     transform: translateY(0%);
   }
 }
+

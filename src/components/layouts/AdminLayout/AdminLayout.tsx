@@ -1,11 +1,12 @@
 import React from 'react';
-import Header from '../ui/Header/Header.tsx';
-
-import { Outlet } from 'react-router-dom';
-import Menu from '../ui/Menu/Menu.tsx';
-import UpperBar from '../ui/UpperBar/UpperBar.tsx';
-import { MenuProvider } from '../../context/MenuContext.tsx';
 import './AdminLayout.style.scss';
+
+import Header from '../../ui/Header/Header.tsx';
+import { Outlet } from 'react-router-dom';
+import Menu from '../../ui/Menu/Menu.tsx';
+import UpperBar from '../../ui/UpperBar/UpperBar.tsx';
+import { MenuProvider } from '../../../context/MenuContext.tsx';
+
 
 function AdminLayout(props) {
   return (

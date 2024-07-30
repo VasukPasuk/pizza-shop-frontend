@@ -1,4 +1,4 @@
-import { Flour, Size, Theme } from './types.tsx';
+import {Flour, Role, Size, Theme} from './types.tsx';
 import React from 'react';
 
 export interface IThemeContext {
@@ -21,4 +21,33 @@ export interface IShopCard {
   inCart: boolean;
   flour: Flour;
   key: any;
+}
+
+
+export interface IUser {
+  id: number
+  login: string,
+  role: Role
+}
+
+export interface IUserExtra {
+  isActivated: boolean
+}
+
+export interface IUserProfile {
+  name: string
+  firstSurname: string
+  secondSurname: string
+  district: string
+  phone: string
+  email: string
+  street: string
+  city: string
+}
+
+export interface IRegisterResponseSuccess {
+  access_token: string
+  user: IUser
+  profile: IUserProfile
+  extra: IUserExtra
 }

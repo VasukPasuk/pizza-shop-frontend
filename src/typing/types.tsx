@@ -10,4 +10,4 @@ export type OrderStatus = 'pending' | 'process' | 'fulfilled';
 
 export type CaloriesStage = 'low' | 'medium' | 'high';
 
-export type Role = "admin" | "customer"
+export type Role = "ADMIN" | "CUSTOMER"

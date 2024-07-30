@@ -1,6 +1,5 @@
-import React, {useState} from 'react';
+import {useState} from 'react';
 import './style.scss';
-import {Link} from 'react-router-dom';
 import Pagination from '../../ui/Pagination/Pagination.tsx';
 import ShopCard from '../../ui/ShopCard/ShopCard.tsx';
 import {PIZZA_DATA} from '../../../constants/test_data.ts';
@@ -9,10 +8,14 @@ import CategoriesTabPanel from "../../ui/CategoriesTabPanel/CategoriesTabPanel.t
 
 const categories: string[] = ['All', 'Seafood', 'Vegetarian', 'Meat', 'Spicy'];
 
-function ShopPage(props) {
+function ShopPage() {
   const [currentCategory, setCurrentCategory] = useState<string>("All")
+  const [currentPage, setCurrentPage] = useState<number>(1)
+  const [totalPages, setTotalPages] = useState<number>(26)
+  console.log("Current page ", currentPage)
+  console.log("Total page ", totalPages)
   return (
-    <div className="shop-page__container">
+    <div id="shop-page__container">
       <ToolbarPanel/>
       <CategoriesTabPanel
         categories={categories}
@@ -34,7 +37,7 @@ function ShopPage(props) {
           />
         ))}
       </div>
-      <Pagination/>
+      <Pagination currentPage={currentPage} setCurrentPage={setCurrentPage} total={totalPages}/>
     </div>
   );
 }

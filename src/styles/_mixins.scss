@@ -1,8 +1,0 @@
-@mixin bottom-accent-shadow($color, $opacity-length) {
-  background: transparentize($color, $opacity-length);
-  box-shadow: 0 3px 0 0 $color;
-  transition: 0.5s ease background;
-  &:hover {
-    background: transparentize($color, calc($opacity-length + 0.1));
-  }
-}

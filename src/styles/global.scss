@@ -1,3 +1,26 @@
+@import "colors";
+@import "dark-theme-vars";
+@import "light-theme-vars";
+@import "dynamic-variables";
+
+
+html {
+  font-size: 16px;
+}
+
+body {
+  min-height: 100%;
+  background: var(--body-bg-color);
+
+  #root {
+    height: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    color: var(--simple-text-color);
+  }
+}
+
+
 // _reset.scss
 
 // Reset all elements to have no margin, padding, border, etc.
@@ -7,7 +30,7 @@
   margin: 0;
   padding: 0;
   border: 0;
-  font: inherit;
+  font-family: Inter, sans-serif;
   vertical-align: baseline;
   box-sizing: border-box;
 }
@@ -43,7 +66,7 @@ summary {
 }
 
 body {
-  line-height: 1;
+  line-height: 1.325;
 }
 
 // Ensure HTML5 elements are styled consistently
@@ -96,3 +119,9 @@ a {
   text-decoration: none;
   color: inherit;
 }
+
+
+
+
+
+

@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App.tsx';
-import './styles/_main.scss';
-import './styles/_dynamic-variables.scss';
+import './styles/global.scss';
+import './styles/dynamic-variables.scss';
 import { DevSupport } from '@react-buddy/ide-toolbox';
 import { ComponentPreviews, useInitial } from './dev';
 

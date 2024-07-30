@@ -43,23 +43,23 @@ function MainPage(props) {
           src="./pz-pozza-removebg-preview.png"
           width={150}
           height={125}
-          alt=""
+          alt="levitating-pizza-preview"
         />
         <img
           src="./pz-pozza-removebg-preview.png"
           width={200}
           height={150}
-          alt=""
+          alt="levitating-pizza-preview"
         />
         <img
           src="./pz-pozza-removebg-preview.png"
           width={250}
           height={200}
-          alt=""
+          alt="levitating-pizza-preview"
         />
       </div>
 
-      {!(theme === 'dark') && (
+      {theme === 'dark' && (
         <>
           <div className="background-color-ball first-ball" />
           <div className="background-color-ball second-ball" />

@@ -1,4 +1,4 @@
-@import 'src/styles/_colors.scss';
+@import '../../../styles/colors';
 
 #footer_component {
   display: flex;
@@ -16,7 +16,7 @@
     @media screen and (width <= 768px) {
       flex-direction: column;
       gap: 4rem;
-      padding: 1rem 4rem;
+      padding: 1rem 0;
     }
     .footer-column {
       display: flex;

@@ -1,14 +1,13 @@
-import React from 'react';
 import './style.scss';
-import { FaPizzaSlice, FaViber } from 'react-icons/fa6';
-import { MdEmail, MdLocationOn, MdOutlineMail } from 'react-icons/md';
-import { AiFillFacebook, AiFillPhone } from 'react-icons/ai';
-import { Link } from 'react-router-dom';
-import { BiLogoTelegram, BiLogoTwitter } from 'react-icons/bi';
-import { useTheme } from '../../../hooks/useTheme.tsx';
+import {FaPizzaSlice, FaViber} from 'react-icons/fa6';
+import {MdLocationOn, MdOutlineMail} from 'react-icons/md';
+import {AiFillFacebook, AiFillPhone} from 'react-icons/ai';
+import {Link} from 'react-router-dom';
+import {BiLogoTelegram, BiLogoTwitter} from 'react-icons/bi';
+import {useTheme} from '../../../hooks/useTheme.tsx';
 
 function Footer() {
-  const { theme } = useTheme();
+  const {theme} = useTheme();
   return (
     <footer
       id="footer_component"
@@ -17,7 +16,7 @@ function Footer() {
       <div className="footer-up">
         <div className="footer-column inform-col">
           <div className="footer-column-head">
-            <FaPizzaSlice />
+            <FaPizzaSlice/>
             <span>PIZZA PARADISE</span>
           </div>
           <div className="footer-column-body">
@@ -29,15 +28,15 @@ function Footer() {
           <div className="footer-column-head">Contacts</div>
           <ul className="footer-column-body">
             <li className="footer-contact-box">
-              <MdLocationOn />
+              <MdLocationOn/>
               <span>st. Delicious, 12, city Kyiv </span>
             </li>
             <li className="footer-contact-box">
-              <AiFillPhone />
+              <AiFillPhone/>
               <span>123-456-7890</span>
             </li>
             <li className="footer-contact-box">
-              <MdOutlineMail />
+              <MdOutlineMail/>
               <span>info@pizzaonline.com</span>
             </li>
           </ul>
@@ -62,10 +61,10 @@ function Footer() {
         <div className="footer-column follow-col">
           <div className="footer-column-head">Follow us</div>
           <div className="footer-column-body">
-            <BiLogoTelegram />
-            <FaViber />
-            <AiFillFacebook />
-            <BiLogoTwitter />
+            <BiLogoTelegram/>
+            <FaViber/>
+            <AiFillFacebook/>
+            <BiLogoTwitter/>
           </div>
         </div>
       </div>

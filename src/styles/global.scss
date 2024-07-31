@@ -13,10 +13,13 @@ body {
   background: var(--body-bg-color);
 
   #root {
+    display: flex;
+    flex-direction: column;
     height: 100%;
     max-width: 1200px;
     margin: 0 auto;
     color: var(--simple-text-color);
+    min-height: 100dvh;
   }
 }
 

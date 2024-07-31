@@ -1,15 +1,37 @@
 import {Link, useParams} from "react-router-dom";
 import './style.scss';
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {Size} from "../../../typing/types.tsx";
 import {SIZES} from "../../../constants.ts";
 import {FaHeart, FaStar} from "react-icons/fa";
+import {useGetPizzaByNameQuery} from "../../../api/rtkQuery/pizzaApi.ts";
 
 
 function ProductDescription() {
   const {name} = useParams()
+  // console.log("Name query: ",name)
+  // const {data, error, isLoading} = useGetPizzaByNameQuery(name as string);
   const [reviews, setReviews] = useState([])
   const [activeSizeTab, setActiveSizeTab] = useState<Size>("medium")
+  // console.log("Result: ", data)
+  // console.log("Error: ", error)
+  // useEffect(() => {
+  //
+  // })
+  // if (error) {
+  //   return (
+  //     <div className="product_description__error-container">
+  //       Error...
+  //     </div>
+  //   )
+  // }
+  // if (isLoading) {
+  //   return (
+  //     <div className="product_description__loading-container">
+  //       Loading...
+  //     </div>
+  //   )
+  // }
   return (
     <section id="product_description">
       <div className="product_description__upper-bar">
@@ -88,15 +110,15 @@ function ProductDescription() {
           ))}
         </div>
         <div className="product_description__size-additional-box">
-          <div>
+          <div className="addbox__info-box">
             <span>Calories</span>
             <span>5 Cal</span>
           </div>
-          <div>
+          <div className="addbox__info-box">
             <span>Weight</span>
             <span>507 gr.</span>
           </div>
-          <div>
+          <div className="addbox__info-box">
             <span>Price</span>
             <span>8,5$</span>
           </div>

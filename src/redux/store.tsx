@@ -1,7 +1,7 @@
 import {configureStore} from '@reduxjs/toolkit'
 import {TypedUseSelectorHook, useDispatch, useSelector} from 'react-redux'
 import userReducer from './slices/User.slice.tsx'
-import {pizzaApi} from "../api/rtkQuery/pizzaApi.ts";
+import {pizzaApi} from "./services/pizzaApi.ts";
 import {setupListeners} from "@reduxjs/toolkit/query";
 
 

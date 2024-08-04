@@ -1,12 +1,34 @@
-import {IReview} from "../../../../redux/services/pizzaApi.ts";
+import {useEffect, useState} from "react";
+import {useLazyGetPizzaReviewsQuery} from "../../../../redux/services/reviewApi.ts";
+import {IReview} from "../../../../typing/interfaces.tsx";
+import Review from "../../../ui/Review/Review.tsx";
 
 
-interface IReviewsWrapper {
-  reviews: IReview[] | undefined;
+interface IProductReviewsBox {
+  pizza_name: string
 }
 
-function ReviewsWrapper(props: IReviewsWrapper) {
-  const {reviews} = props;
+function ProductReviewsBox(props: IProductReviewsBox) {
+  const {pizza_name} = props;
+  const [reviews, setReviews] = useState<IReview[]>([])
+  const [getReviews, {data, isError}] = useLazyGetPizzaReviewsQuery();
+
+  useEffect(() => {
+    getReviews({withlength: true, page: 1, order: "asc", limit: 5, pizza_name: pizza_name, user: true})
+  }, []);
+  useEffect(() => {
+    if (!data) return
+    setReviews(prev => data.items)
+  }, [data])
+
+  if (!data) {
+    return (
+      <div>
+        Error
+      </div>
+    )
+  }
+
   return (
     <div className="product_description__reviews-box">
       <section className="product_description__reviews-box__upper-bar">
@@ -36,14 +58,17 @@ function ReviewsWrapper(props: IReviewsWrapper) {
         </ul>
       </section>
       <section className="product_description__reviews-box__comments-container">
-        {!reviews?.length && (
+        {!reviews.length && (
           <div className="no-comments-wrapper">
             No comments
           </div>
         )}
+        {reviews.map((review) => (
+          <Review review={review} key={review.id}/>
+        ))}
       </section>
     </div>
   )
 }
 
-export default ReviewsWrapper
+export default ProductReviewsBox

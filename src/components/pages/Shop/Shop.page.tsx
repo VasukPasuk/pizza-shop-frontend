@@ -1,10 +1,11 @@
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
 import './style.scss';
 import Pagination from '../../ui/Pagination/Pagination.tsx';
 import ShopCard from '../../ui/ShopCard/ShopCard.tsx';
-import {PIZZA_DATA} from '../../../constants/test_data.ts';
 import ToolbarPanel from '../../ui/ToolbarPanel/ToolbarPanel.tsx';
 import CategoriesTabPanel from "../../ui/CategoriesTabPanel/CategoriesTabPanel.tsx";
+import {useLazyGetManyPizzaQuery} from "../../../redux/services/pizzaApi.ts";
+import {IPizza} from "../../../typing/interfaces.tsx";
 
 const categories: string[] = ['All', 'Seafood', 'Vegetarian', 'Meat', 'Spicy'];
 
@@ -12,8 +13,25 @@ function ShopPage() {
   const [currentCategory, setCurrentCategory] = useState<string>("All")
   const [currentPage, setCurrentPage] = useState<number>(1)
   const [totalPages, setTotalPages] = useState<number>(26)
-  console.log("Current page ", currentPage)
-  console.log("Total page ", totalPages)
+  const [pizzas, setPizzas] = useState<IPizza[]>([])
+  const [getMany, {data, error, isLoading, isError, isUninitialized}] = useLazyGetManyPizzaQuery();
+  useEffect(() => {
+    getMany({category: currentCategory.toLowerCase(), limit: 8, order: "desc", page: 1, withlength: true})
+  }, [])
+  useEffect(() => {
+    if (!data || !data.items) return
+    setPizzas(_ => data.items)
+    setTotalPages(_ => data.total)
+  }, [data])
+
+  if (!data || isError) {
+    return (
+      <div>
+        Error
+      </div>
+    )
+  }
+
   return (
     <div id="shop-page__container">
       <ToolbarPanel/>
@@ -23,14 +41,11 @@ function ShopPage() {
         setCategoryFn={setCurrentCategory}
       />
       <div className="product-shop-cards__section">
-        {PIZZA_DATA.slice(0, 8).map((pizza) => (
+        {pizzas.map((pizza) => (
           <ShopCard
-            category={pizza.category}
-            size={pizza.size}
-            price={pizza.price}
+            category={pizza.category_name}
+            image={pizza.image}
             name={pizza.name}
-            inCart={pizza.inCart}
-            flour={pizza.flour}
             discount={pizza.discount}
             popular={pizza.popular}
             key={pizza.name}

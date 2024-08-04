@@ -1,3 +1,4 @@
+
 type TypeThemeDict = {
   light: string;
   dark: string;

@@ -12,7 +12,7 @@ import {useNavigate} from "react-router-dom";
 
 
 function ShopCard(props: IShopCard) {
-  const {key, category, size = 'medium', discount, flour, inCart, name, popular, price} = props;
+  const {key, category, size = 'medium', discount, flour, inCart, name, popular, price, image} = props;
   const [activeActionMenu, setActiveActionMenu] = useState<boolean>(false);
   const [pizzaSize, setPizzaSize] = useState<Size>(size)
   const [pizzaFlour, setPizzaFlour] = useState<Flour>(flour)
@@ -63,12 +63,12 @@ function ShopCard(props: IShopCard) {
         </div>
       </div>
       <img
-        src="./pz-pozza-removebg-preview.png"
+        src={`${import.meta.env.VITE_SERVER_URL}/${image}`}
         alt="pizza-image"
         className="pizza-image"
         loading="lazy"
-        width={125}
-        height={125}
+        width={175}
+        height={175}
       />
 
       <div className="pizza-name-box">

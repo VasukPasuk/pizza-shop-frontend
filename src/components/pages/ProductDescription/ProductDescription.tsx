@@ -1,14 +1,8 @@
 import {Link, useParams} from "react-router-dom";
 import './style.scss';
-import {useState} from "react";
-import {Size} from "../../../typing/types.tsx";
-import {SIZES} from "../../../constants.ts";
-import {FaHeart, FaStar} from "react-icons/fa";
-import {IPizza, useGetPizzaWithQuery} from "../../../redux/services/pizzaApi.ts";
-import {AiFillHeart} from "react-icons/ai";
-import ProductDescriptionWrapper from "./Presentational/ProductDescriptionWrapper.tsx";
-import ProductImageWrapper from "./Presentational/ProductImageWrapper.tsx";
-import ReviewsWrapper from "./Presentational/ReviewsWrapper.tsx";
+import {useGetPizzaWithQuery} from "../../../redux/services/pizzaApi.ts";
+import ProductDescriptionBox from "./Presentational/ProductDescriptionBox.tsx";
+import ProductReviewsBox from "./Presentational/ProductReviewsBox.tsx";
 
 
 const ErrorComponent = () => (
@@ -25,7 +19,11 @@ const LoadingComponent = () => (
 
 function ProductDescription() {
   const {name} = useParams()
-  const {data, error, isLoading} = useGetPizzaWithQuery({name: name as string, category: true, Review: true});
+  const {data, error, isLoading} = useGetPizzaWithQuery({
+    name: name as string,
+    category: true,
+    additional_options: true
+  });
 
   if (error || !data) {
     return <ErrorComponent/>
@@ -34,35 +32,23 @@ function ProductDescription() {
     return <LoadingComponent/>
   }
 
-  const {category, reviews, ...pizza} = data;
-  console.log(data)
+  const {category, additional_options, ...pizza} = data;
+
+  if (!category || !additional_options) {
+    return <ErrorComponent/>
+  }
+
   return (
     <section id="product_description">
-
-      <div className="product_description__upper-bar">
-        <Link to="/shop">
-          Return to shop
-        </Link>
-        <div className="product_description__upper-bar__buttons-group">
-          <button>
-            Add to cart
-          </button>
-          <button>
-            Add to favourites
-          </button>
-        </div>
-      </div>
+      <UpperBar/>
       <div className="product_description__content-box">
-        <ProductImageWrapper
-          image={pizza.image}
-          rating={pizza.rating}
-        />
-        <ProductDescriptionWrapper
+        <ProductDescriptionBox
           pizza={pizza}
-          categoryDescription={category?.description}
+          category={category}
+          additionals={additional_options}
         />
-        <ReviewsWrapper
-          reviews={reviews}
+        <ProductReviewsBox
+          pizza_name={pizza.name}
         />
       </div>
     </section>
@@ -71,5 +57,21 @@ function ProductDescription() {
 
 export default ProductDescription
 
-
+function UpperBar() {
+  return (
+    <div className="product_description__upper-bar">
+      <Link to="/shop">
+        Return to shop
+      </Link>
+      <div className="product_description__upper-bar__buttons-group">
+        <button>
+          Add to cart
+        </button>
+        <button>
+          Add to favourites
+        </button>
+      </div>
+    </div>
+  )
+}
 
